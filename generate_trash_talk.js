@@ -4,26 +4,14 @@ function generateTask(career) {
   designer: ['畫一張圖', '改個 logo','順便幫忙設計一下','隨便換個設計'],
   founder: ['週末加班', '要能賺錢','想個 business model','找 VC 募錢']
   }
-  let index = 0
-  // const index = Math.floor(Math.random()*(task.career.length))
-  switch (career) {
-    case 'developer':
-      index = Math.floor(Math.random()*(task.developer.length))
-      return task.developer[index]
-    case 'designer':
-      index = Math.floor(Math.random()*(task.designer.length))
-      return task.designer[index]
-    case 'founder':
-      index = Math.floor(Math.random()*(task.founder.length))
-      return task.founder[index]
-    default:
-      return
-  }
+  const index = Math.floor(Math.random()*(task[career].length))
+  return (task[career])[index]
 }
 
-function generatePhrase(careerNum) {
+function generatePhrase() {
   const phrase = ['很容易', '很快', '很正常']
-  return phrase[careerNum]
+  const index = Math.floor(Math.random()*(phrase.length))
+  return phrase[index]
 }
 
 function generateTalk(career) {
@@ -44,7 +32,7 @@ function generateTalk(career) {
       break;
   }
   if (careerNum >= 0) {
-    return '身為一個' + target[careerNum] + '，' + generateTask(career) + '，' + generatePhrase(careerNum) + '吧！'
+    return '身為一個' + target[careerNum] + '，' + generateTask(career) + '，' + generatePhrase() + '吧！'
   }　else {
     return '請選擇一個職業'
   }
